@@ -29,7 +29,9 @@ class Response:
             sort_keys=True, indent=4) + '</pre>'
 
 def padnsplit(s, n):
-    return ( " ".join([s[k:k+n].zfill(n) for k in range(0, len(s), n)]) )
+    if (len(s) % n):
+        s = s.zfill( len(s) + ( n - (len(s) % n ) ) )
+    return " ".join([s[k:k+n] for k in range(0, len(s), n)])
 
 @app.route('/')
 def hello_world():

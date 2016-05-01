@@ -5,8 +5,6 @@ import json
 from flask import Flask
 from flask import request
 app = Flask(__name__)
-app.config['DEBUG'] = True;
-
 
 errcodes = {
     0: 'success',

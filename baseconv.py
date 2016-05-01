@@ -5,10 +5,12 @@ import json
 from flask import Flask
 from flask import request
 app = Flask(__name__)
+app.config['DEBUG'] = True;
+
 
 errcodes = {
     0: 'success',
-    404: 'try /0o144 , /0xdeadbeef, /0b1100100, /42. optionally, use ?pad.',
+    404: 'try /0o144 , /0xdeadbeef, /0b1100100, /42. optionally, use ?pad. source: git.io/baseconv',
     'parseerror': 'parse error!'
 }
 
@@ -36,7 +38,7 @@ def hello_world():
     return Response(404).to_JSON();
 
 @app.route('/<a>')
-def atob(a):
+def baseconv(a):
     try:
         _from = int(a, 0)
     except:
